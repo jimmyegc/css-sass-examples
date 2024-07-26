@@ -1,0 +1,52 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background: black;
+}
+
+.container {
+	--width: 240px;
+	--height: 330px;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	perspective: 300px;
+
+	.card {
+		position: relative;
+		width: var(--width);
+		height: var(--height);
+		cursor: pointer;
+		transition: 1.1s ease-in-out;
+		transform-style: preserve-3d;
+
+		&:hover {
+			transform: rotateY(0.5turn);
+		}
+
+		.card__front {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			backface-visibility: hidden;
+			transition: 1s cubic-bezier(0, 0, 0, 2.57);
+			-webkit-box-reflect: below -12px linear-gradient(transparent, #00000000, rgb(0
+							0 0 / 14%));
+
+			img {
+				width: var(--width);
+				height: var(--height);
+				object-fit: cover;
+				border-radius: 1rem;
+			}
+
+			&--back {
+				transform: rotateY(0.5turn);
+			}
+		}
+	}
+}
